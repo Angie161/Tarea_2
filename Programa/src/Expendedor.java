@@ -1,7 +1,4 @@
 class Expendedor{
-    public static final int COCA=1;
-    public static final int SPRITE=2;
-
     private Deposito<Bebida> coca = new Deposito<>();
     private Deposito<Bebida> sprite= new Deposito<>();
     private Deposito<Moneda> monVu = new Deposito<>();
@@ -15,11 +12,11 @@ class Expendedor{
             sprite.add(new Sprite(200+i));
         }
     }
-    public Bebida comprarBebida(Moneda m,int cual) {
+    public Bebida comprarBebida(Moneda m,TipoBebida cual) {
         //Vuelto
         try {
             switch (cual) {
-                case 1:
+                case COCA:
                     if (m.getValor() >= precio && coca.check() != 0) {
                         for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
                             monVu.add(new Moneda100());
@@ -32,7 +29,7 @@ class Expendedor{
                         return null;
                     }
 
-                case 2:
+                case SPRITE:
                     if (m.getValor() >= precio && sprite.check() != 0) {
                         for (int i = 0; i < (m.getValor() - precio) / 100; i++) {
                             monVu.add(new Moneda100());

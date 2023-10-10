@@ -2,7 +2,7 @@ class Comprador {
     private String sonido;
     private int vuelto=0;
 
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) {
+    public Comprador(Moneda m, TipoBebida cualBebida, Expendedor exp) {
         //Sonido
         try {
             sonido = exp.comprarBebida(m, cualBebida).beber();
