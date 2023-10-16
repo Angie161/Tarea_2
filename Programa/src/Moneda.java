@@ -1,5 +1,5 @@
 /**
- * Esta clase abstracta es la base (superclase) para los distintas clases que representan una moneda de un valor espesifico.
+ * Esta clase abstracta es la base (superclase) para las distintas clases que representan una moneda de un valor espesífico.
  */
 public abstract class Moneda implements Comparable<Moneda> {
 
