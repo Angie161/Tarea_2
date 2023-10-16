@@ -18,10 +18,11 @@ public class Expendedor{
         }
     }
     public Producto comprarProducto(Moneda m,TipoProducto cual) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
-        //Vuelto
+
         if(m==null){
             throw new PagoIncorrectoException();
         }
+
         switch (cual) {
             case COCA:
                 if (m.getValor() >= Precio.VALCOCA.getPrecio() && coca.check() != 0) {
@@ -31,13 +32,11 @@ public class Expendedor{
                     return coca.get();
                 }
                 else {
+                    monVu.add(m);
                     if(m.getValor()<Precio.VALCOCA.getPrecio()){
-                        for (int i = 0; i < m.getValor() / 100; i++) {
-                            monVu.add(new Moneda100());
-                        }
                         throw new PagoInsuficienteException();
                     }
-                    else if(coca.check()==0){
+                    else if(coca.check()==0) {
                         throw new NoHayProductoException();
                     }
                 }
@@ -50,13 +49,11 @@ public class Expendedor{
                     return sprite.get();
                 }
                 else {
+                    monVu.add(m);
                     if(m.getValor()<Precio.VALSPRITE.getPrecio()){
-                        for (int i = 0; i < m.getValor() / 100; i++) {
-                            monVu.add(new Moneda100());
-                        }
                         throw new PagoInsuficienteException();
                     }
-                    else if(sprite.check()==0){
+                    else if(sprite.check()==0) {
                         throw new NoHayProductoException();
                     }
                 }
@@ -69,22 +66,52 @@ public class Expendedor{
                     return fanta.get();
                 }
                 else {
+                    monVu.add(m);
                     if(m.getValor()<Precio.VALFANTA.getPrecio()){
-                        for (int i = 0; i < m.getValor() / 100; i++) {
-                            monVu.add(new Moneda100());
-                        }
                         throw new PagoInsuficienteException();
                     }
-                    else if(fanta.check()==0){
+                    else if(fanta.check()==0) {
+                        throw new NoHayProductoException();
+                    }
+                }
+
+            case SNICKERS:
+                if (m.getValor() >= Precio.VALSNICK.getPrecio() && snikers.check() != 0) {
+                    for (int i = 0; i < (m.getValor() - Precio.VALSNICK.getPrecio()) / 100; i++) {
+                        monVu.add(new Moneda100());
+                    }
+                    return snikers.get();
+                }
+                else {
+                    monVu.add(m);
+                    if(m.getValor()<Precio.VALSNICK.getPrecio()){
+                        throw new PagoInsuficienteException();
+                    }
+                    else if(snikers.check()==0) {
+                        throw new NoHayProductoException();
+                    }
+                }
+
+            case SUPER8:
+                if (m.getValor() >= Precio.VALSUPER8.getPrecio() && super8.check() != 0) {
+                    for (int i = 0; i < (m.getValor() - Precio.VALSUPER8.getPrecio()) / 100; i++) {
+                        monVu.add(new Moneda100());
+                    }
+                    return super8.get();
+                }
+                else {
+                    monVu.add(m);
+                    if(m.getValor()<Precio.VALSUPER8.getPrecio()){
+                        throw new PagoInsuficienteException();
+                    }
+                    else if(super8.check()==0) {
                         throw new NoHayProductoException();
                     }
                 }
 
             default:
-                for (int i = 0; i < m.getValor() / 100; i++) {
-                    monVu.add(new Moneda100());
-                }
-                throw new PagoIncorrectoException();
+                monVu.add(m);
+                throw new NoHayProductoException();
         }
     }
 
