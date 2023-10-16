@@ -1,8 +1,21 @@
-class Moneda500 extends Moneda{
-    public Moneda500(){
+/**
+ * Esta es una subclase de la clase abstracta "Moneda", y representa una moneda de 500.
+ */
+class Moneda500 extends Moneda {
+
+    /**
+     * Constructor que utiliza el de la superclase.
+     */
+    public Moneda500() {
         super();
     }
-    public int getValor(){
+
+    /**
+     * Este método es como un getter del valor.
+     * 
+     * @return El valor ficticio de la moneda, 500.
+     */
+    public int getValor() {
         return 500;
     }
 }
