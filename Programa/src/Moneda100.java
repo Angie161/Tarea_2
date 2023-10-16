@@ -1,7 +1,7 @@
 /**
  * Esta es una subclase de la clase abstracta "Moneda", y representa una moneda de 100.
  */
-class Moneda100 extends Moneda {
+public class Moneda100 extends Moneda {
 
     /**
      * Constructor que utiliza el de la superclase.
