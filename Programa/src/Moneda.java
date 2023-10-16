@@ -27,7 +27,6 @@ public abstract class Moneda implements Comparable<Moneda> {
      * Método compareTo() sobreescrito de la interfaz Comaparable y con el objetivo de obtener información al comparar dos monedas.
      * 
      * @param moneda La moneda con la que se quiera comparar el valor.
-     * 
      * @return Devuelve 1 si el valor de las monedas comparadas es el mismo y 0 si sus valores son distintos.
      */
     @Override
@@ -37,5 +36,15 @@ public abstract class Moneda implements Comparable<Moneda> {
         } else {
             return 0;
         }
+    }
+
+    /**
+     * Método toString() sobreescrito y con el objetivo de obtener información del objeto.
+     *
+     * @return La serie y el valor de la Moneda.
+     */
+    @Override
+    public String toString() {
+        return this.getSerie() + " de valor $" + this.getValor() + ".";
     }
 }
