@@ -1,13 +1,22 @@
+/**
+ * Esta clase simula una máquina expendedora, la cual posee varios depósitos de productos y uno de monerdas.
+ * Permite adquirir estos productos a través de una compra y entrega un vuelto.
+ *
+ * @author Angie Ramírez
+ */
 public class Expendedor{
+    /** Depositos que alamacenan los tipos de productos o monedas*/
     private Deposito<Bebida> coca = new Deposito<>();
     private Deposito<Bebida> sprite= new Deposito<>();
     private Deposito<Bebida> fanta= new Deposito<>();
     private Deposito<Dulce> snikers= new Deposito<>();
     private Deposito<Dulce> super8= new Deposito<>();
-
     private Deposito<Moneda> monVu = new Deposito<>();
 
-
+    /**
+     * Método constructor de la clase Expendedor. Inicializa los depósitos de cada producto asignandoles numeros de serie.
+     * @param numProductos Cantidad de productos estándar que se generarán en todos los depósitos.
+     */
     public Expendedor(int numProductos){
         for(int i=0; i<numProductos;i++){
             coca.add(new CocaCola(100+i));
@@ -17,6 +26,16 @@ public class Expendedor{
             super8.add(new Super8(500+i));
         }
     }
+
+    /**
+     * Realiza la compra de un producto, verificando el recibo de la moneda, almacenando el vuelto y sacando el producto del Depósito correspondiente.
+     * @param m Moneda recibida para pagar.
+     * @param cual TipoProducto que permite saber cuál producto se está solicitando.
+     * @return Producto adquirido del depósito solicitado.
+     * @throws PagoIncorrectoException Si la variable m resulta null.
+     * @throws NoHayProductoException Si el consumidor selecciona un tipo de producto no existente en el Enum o si no hay más productos en su depósito.
+     * @throws PagoInsuficienteException Si la Moneda m es de un valor menor al precio del producto solicitado.
+     */
     public Producto comprarProducto(Moneda m,TipoProducto cual) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
 
         if(m==null){
@@ -115,6 +134,10 @@ public class Expendedor{
         }
     }
 
+    /**
+     * Entrega el dinero sobrante tras realizar una compra, sacando las Monedas del depósito MonVu.
+     * @return Moneda adquirida del depósito MonVu.
+     */
     public Moneda getVuelto(){
         return monVu.get();
     }
