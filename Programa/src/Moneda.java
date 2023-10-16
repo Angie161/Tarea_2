@@ -11,11 +11,11 @@ public abstract class Moneda implements Comparable<Moneda> {
 
     /**
      * Es como un método getter para la serie de la moneda.
-     * 
+     *
      * @return La dirección en memoria del objeto, esto representa su serie.
      */
-    public Moneda getSerie() {
-        return this;
+    public String getSerie() {
+        return super.toString();
     }
 
     /**
