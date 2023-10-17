@@ -1,5 +1,17 @@
 # 📖 Tarea_2
 
+<p align="center">
+  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=%236060cD&size=25&center=true&vCenter=true&width=600&height=100&lines=Ce+travail+était+amusant;Cela+fait+des+merveilles;GitHub+est+incroyable"></a>
+</p>
+
+### 💼 Programa y Tests
+
+En este proyecto, encontrarás dos carpetas clave: `test` y `src` dentro del directorio `Programa`. La carpeta `test` alberga todos los casos de prueba y pruebas de funcionalidad para las clases que residen en la carpeta `src`. Utilizamos JUnit para realizar exhaustivos test unitarios y garantizar el correcto funcionamiento de nuestro programa.
+
+### 📝 UML
+
+Además, hemos incluido una imagen del diagrama UML al inicio del repositorio con el nombre `uml.png`. En caso de que no puedas visualizarla por alguna razón, también está disponible haciendo clic [aquí](https://github.com/Angie161/Tarea_2/assets/146099765/91d1ff92-fb75-4b90-9c3a-ea495baa139c)
+
 
 ---
 
