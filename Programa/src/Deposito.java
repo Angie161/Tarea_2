@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-class Deposito<E>{
-    private ArrayList<E> almacen;
+public class Deposito<T>{
+    private ArrayList<T> almacen;
     public Deposito(){
-        almacen=new ArrayList<E>();
+        almacen=new ArrayList<T>();
     }
-    public void add(E b){
+    public void add(T b){
         almacen.add(b);
     }
-    public E get(){
+    public T get(){
         if(almacen.size()!=0){
             return almacen.remove(0);
         }

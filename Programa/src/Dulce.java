@@ -1,6 +1,6 @@
-public abstract class Bebida extends Producto{
+public abstract class Dulce extends Producto{
     private int serie;
-    public Bebida(int numSerie){
+    public Dulce(int numSerie){
         super();
         this.serie=numSerie;
     }
