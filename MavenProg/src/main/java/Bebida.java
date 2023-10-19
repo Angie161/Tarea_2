@@ -1,8 +1,25 @@
-public abstract class Bebida extends Producto{
+/**
+ * Esta es una subclase abstracta de Producto y puede representa algun tipo de bebida.
+ */
+public abstract class Bebida extends Producto {
     private int serie;
-    public Bebida(int numSerie){
+
+    /**
+     * Constructor personalizado de Bebida que permite asignarle un número de serie.
+     * 
+     * @param serie Es el número que representa la serie del objeto.
+     */
+    public Bebida(int numSerie) {
         super();
         this.serie=numSerie;
     }
-    public int getSerie(){ return serie; }
+
+    /**
+     * Este es un método getter para obtener el número de serie.
+     * 
+     * @return La serie de la bebida.
+     */
+    public int getSerie() {
+        return serie; 
+    }
 }
