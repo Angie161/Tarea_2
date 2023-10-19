@@ -19,9 +19,13 @@ public class TestComprador {
 
     @Test
     @DisplayName("Test de Comprador.")
-    void testComprar() {
-    	comprador = new Comprador(moneda, SPRITE);
-    	assertTrue(comprador.queConsumiste().equals("sprite"));
-    	assertEquals(200,comprador.cuantoVuelto());
+    void testComprarConTodoBien() {
+        try{
+            comprador = new Comprador(moneda, SPRITE);
+            assertTrue(comprador.queConsumiste().equals("sprite"));
+            assertEquals(200,comprador.cuantoVuelto());
+        } catch(Exception e) {
+            assertTrue(false);
+        }
     }
 }
