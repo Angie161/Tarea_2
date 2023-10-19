@@ -1,4 +1,11 @@
+/**
+ * Esta es la clase Main y contiene al método main con múltiples casos en los que se prueban las clases.
+ */
 public class Main {
+
+    /**
+     * Método main en el que se ejecutan múltiples pruebas.
+     */
     public static void main(String[] args) {
         System.out.println("Mando a Pedrito a comprar un snicker por 200 pesos con una moneda de 1500.");
         Moneda m = new Moneda1500();
