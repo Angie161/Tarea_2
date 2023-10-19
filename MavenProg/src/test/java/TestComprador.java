@@ -1,30 +1,64 @@
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestComprador {
 	private Comprador comprador;
 	private Moneda moneda;
 	private Expendedor expendedor;
-	private TipoProducto sprite;
 
 	@BeforeEach
     void setup() {
-		Moneda1500 moneda1500 = new Moneda1500();
+    	moneda = new Moneda1500();
     	expendedor = new Expendedor(3);
-		sprite=TipoProducto.SPRITE;
     }
 
 
     @Test
     @DisplayName("Test de Comprador.")
-    void testComprar() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
+    void testComprarConTodoBien() {
+        try{
+            comprador = new Comprador(moneda, TipoProducto.SPRITE, expendedor);
+            assertTrue(comprador.queConsumiste().equals("sprite"));
+            assertEquals(200,comprador.cuantoVuelto());
+        } catch(Exception e) {
+            assertTrue(false);
+        }
+    }
 
-		comprador = new Comprador(moneda, sprite,expendedor);
-    	assertTrue(comprador.queConsumiste().equals("sprite"));
-    	assertEquals(200,comprador.cuantoVuelto());
+    @Test
+    @DisplayName("Test de NoHayProductoException.")
+    void testComprarSinProducto() {
+        moneda = new Moneda1500();
+        try{
+            comprador = new Comprador(moneda, TipoProducto.SPRITE, expendedor);
+        } catch(NoHayProductoException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    @DisplayName("Test de PagoInsuficienteException.")
+    void testComprarConMenosDinero() {
+        moneda = new Moneda1000();
+        try{
+            comprador = new Comprador(moneda, TipoProducto.COCA, expendedor);
+        } catch(PagoInsuficienteException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    @DisplayName("Test de PagoIncorrectoException.")
+    void testComprarSinMoneda() {
+        moneda = null;
+        try{
+            comprador = new Comprador(moneda, TipoProducto.COCA, expendedor);
+        } catch(PagoIncorrectoException e) {
+            assertTrue(true);
+        }
     }
 }
