@@ -19,6 +19,9 @@ public class TestProductoExpendedor {
     private TipoProducto super8;
     private TipoProducto cebollas;
 
+    /**
+     * Inicializa las variables que emplearán todas las pruebas de los tests.
+     */
     @BeforeEach
     void setup() {
         expendedor = new Expendedor(2);

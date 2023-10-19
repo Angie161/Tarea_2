@@ -2,12 +2,18 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase de tipo Test Unitario para verificar el correcto funcionamiento de los métodos principales de la clase Moneda.
+ */
 public class TestMoneda {
     private Moneda moneda100;
     private Moneda moneda500;
     private Moneda moneda1000;
     private Moneda moneda1500;
 
+	/**
+	 * Inicializa las variables que emplearán todas las pruebas de los tests.
+	 */
     @BeforeEach
     void setup() {
     	moneda100 = new Moneda100();
@@ -16,6 +22,9 @@ public class TestMoneda {
     	moneda1500 = new Moneda1500();
     }
 
+	/**
+	 * Verifica que exista una correcta asociación entre las clases de las monedas y su valor correspondiente.
+	 */
     @Test
     @DisplayName("Test del método getValor() de las monedas.")
     void testgetValor() {
@@ -25,6 +34,9 @@ public class TestMoneda {
     	assertEquals(1500,moneda100.getValor());
     }
 
+	/**
+	 * Verifica que las monedas sean efectivamente distintas entre sí.
+	 */
     @Test
     @DisplayName("Test del método compareTo() de las monedas.")
     void testCompreTo() {
