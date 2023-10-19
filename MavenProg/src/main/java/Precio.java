@@ -2,11 +2,11 @@
  * Enum que representa los precios de cada uno de los Productos que se encuentran en la clase Expendedor.
  */
 public enum Precio {
-    VALCOCA(2000),
+    VALCOCA(1500),
     VALSPRITE(1300),
     VALFANTA(1400),
     VALSNICK(200),
-    VALSUPER8(300);
+    VALSUPER8(100);
 
     /** Entero que almacenará los precios de cada producto. */
     private int precio;
