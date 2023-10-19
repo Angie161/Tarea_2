@@ -4,18 +4,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Clase de tipo Test Unitario para probar diferentes métodos y aspectos de nuestro programa, para poder detectar fallas y corroborar casos normales.
+ * Clase de tipo Test Unitario para probar específicamente la compra de productos y las excepciones relacionados con la existencia de estos.
  */
-public class TestExpendedor {
+public class TestProductoExpendedor {
     private Expendedor expendedor;
 
     private Moneda pesos100;
     private Moneda pesos500;
     private Moneda pesos1000;
     private Moneda pesos1500;
-    private Moneda Mnull;
 
     private TipoProducto sprite;
+    private TipoProducto cocacola;
     private TipoProducto super8;
     private TipoProducto cebollas;
 
@@ -28,6 +28,7 @@ public class TestExpendedor {
         pesos1500 = new Moneda1500();
         sprite = TipoProducto.SPRITE;
         super8 = TipoProducto.SUPER8;
+        cocacola = TipoProducto.COCA;
     }
 
     /**
@@ -36,7 +37,7 @@ public class TestExpendedor {
     @Test
     @DisplayName("Test Una Bebida")
     void testCompraUnaBebida() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        expendedor.comprarProducto(pesos1500, sprite);
+        assertNotNull(expendedor.comprarProducto(pesos1500, sprite));
     }
 
     /**
@@ -45,52 +46,35 @@ public class TestExpendedor {
     @Test
     @DisplayName("Test Dos Dulces")
     void testCompraDosDulces() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        expendedor.comprarProducto(pesos1000, super8);
-        expendedor.comprarProducto(pesos1500, super8);
+        assertNotNull(expendedor.comprarProducto(pesos1000, super8));
+        assertNotNull(expendedor.comprarProducto(pesos1500, super8));
     }
 
     /**
-     * Verifica que al intentar sacar 3 productos de un depósito que contiene solo 2 dulces, arroje la excepción NoHayProductoException.
+     * Verifica que al intentar sacar 3 productos de un depósito que contiene solo 2 Bebidas, arroje la excepción NoHayProductoException, no recibirá el producto pero sí la moneda empleada.
      */
     @Test
     @DisplayName("Test Excepcion NoHayProductoException")
     void testNoHayProductos() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
-        expendedor.comprarProducto(pesos1000, super8);
-        expendedor.comprarProducto(pesos1500, super8);
+        expendedor.comprarProducto(pesos1500, cocacola);
+        expendedor.comprarProducto(pesos1500, cocacola);
         assertThrows(NoHayProductoException.class, () -> {
-            expendedor.comprarProducto(pesos1500, super8);
+            assertNull(expendedor.comprarProducto(pesos1500, cocacola));
         });
+        assertEquals(1500,expendedor.getVuelto().getValor());
+        assertNull(expendedor.getVuelto());
     }
 
-    /** Verifica que al intentar comprar un producto no registrado dentro del enum (un producto nulo), arroje la excepción de NoHayProductoException.*/
+    /** Verifica que al intentar comprar un producto no registrado dentro del enum (un producto nulo), arroje la excepción de NoHayProductoException y devuelva la moneda.*/
     @Test
     @DisplayName("Test No existe el producto")
     void testNoExisteElProducto() throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         assertThrows(NoHayProductoException.class, () -> {
-            expendedor.comprarProducto(pesos100, cebollas);
+            expendedor.comprarProducto(pesos500, cebollas);
         });
+        assertEquals(500,expendedor.getVuelto().getValor());
+        assertNull(expendedor.getVuelto());
     }
 
-    /**
-     * Verifica que al intentar comprar un producto con una moneda de menor valor que el precio, arroje la excepción PagoInsuficienteException.
-     * En este caso la Sprite cuesta 1300 y le entregaremos una moneda de 500
-     */
-    @Test
-    @DisplayName("Test Excepcion PagoInsuficiente")
-    void testPagoInsuficiente() {
-        assertThrows(PagoInsuficienteException.class, () -> {
-            expendedor.comprarProducto(pesos500, sprite);
-        });
-    }
 
-    /**
-     * Verifica que al intentar comprar con una moneda nula, arroje la excepción PagoIncorrectoException.
-     */
-    @Test
-    @DisplayName("Test Excepcion PagoIncorrectoException")
-    void testPagoIncorrecto() {
-        assertThrows(PagoIncorrectoException.class, () -> {
-            expendedor.comprarProducto(Mnull, sprite);
-        });
-    }
 }
