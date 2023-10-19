@@ -19,13 +19,13 @@ public class Main {
             c = new Comprador(m,TipoProducto.SNICKERS,e);
         } catch(Exception a) {
             System.out.println("Le pregunto a Pedrito si esta vez si me trajo mi pedido,");
-            System.out.println("él me dice que la maquina le dio un error que decia \"" + a + "\".");
+            System.out.println("él me dice que la maquina le dio un error que decia \"" + a + "\" y le devolvio la moneda de " + e.getVuelto().getValor() + ".");
             System.out.println("Me emputo el doble con Pedrito porque ya no podre comer snickers.\n\n");
         }
 
         System.out.println("Esta vez mando a Pedrito a comprar una cocacola con una moneda de 1500.");
         e = new Expendedor(1);
-        m = new Moneda1500();
+        m = new Moneda1000();
         try {
             c = new Comprador(m,TipoProducto.COCA,e);
         } catch(Exception a) {
