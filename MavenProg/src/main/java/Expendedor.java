@@ -14,7 +14,7 @@ public class Expendedor{
     private Deposito<Moneda> monVu = new Deposito<>();
 
     /**
-     * Método constructor de la clase Expendedor. Inicializa los depósitos de cada producto asignandoles numeros de serie.
+     * Método constructor de la clase Expendedor. Inicializa los depósitos de cada producto asignándoles números de serie.
      * @param numProductos Cantidad de productos estándar que se generarán en todos los depósitos.
      */
     public Expendedor(int numProductos){

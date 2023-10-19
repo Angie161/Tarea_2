@@ -34,7 +34,7 @@ public class Comprador {
     /**
      * Este es un constructor personalizado y realiza la operación de comprar un producto en el expendedor.
      *
-     * @return La cantidad de vuelto que se devolvio al comprar.
+     * @return La cantidad de vuelto que se devolvió al comprar.
      */
     public int cuantoVuelto(){
         return vuelto;
@@ -43,7 +43,7 @@ public class Comprador {
     /**
      * Este es un constructor personalizado y realiza la operación de comprar un producto en el expendedor.
      *
-     * @return Un string que explica que se consumio.
+     * @return Un string que explica que se consumió.
      */
     public String queConsumiste(){
         return sonido;

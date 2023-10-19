@@ -1,5 +1,5 @@
 /**
- * Esta es una subclase abstracta de Producto y puede representa algun tipo de bebida.
+ * Esta es una subclase abstracta de Producto y puede representar algún tipo de bebida.
  */
 public abstract class Bebida extends Producto {
     private int serie;

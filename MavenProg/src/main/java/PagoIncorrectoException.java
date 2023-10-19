@@ -1,5 +1,5 @@
 /**
- * Excepción personalizada, la cuál es arrojada cuando se recibe y se trata de trabajar con una moneda nula.
+ * Excepción personalizada, la cual es arrojada cuando se recibe y se trata de trabajar con una moneda nula.
  *
  * @author Angie Ramírez
  */

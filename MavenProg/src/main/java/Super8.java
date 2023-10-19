@@ -1,7 +1,7 @@
 /**
- * Esta es una subclase de Bebida y representa una super8.
+ * Esta es una subclase de Dulce y representa una super8.
  */
-public class Super8 extends Bebida {
+public class Super8 extends Dulce {
 
     /**
      * Constructor personalizado de Super8 que permite asignarle un número de serie.

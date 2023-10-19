@@ -1,7 +1,7 @@
 /**
- * Esta es una subclase de Bebida y representa una snickers.
+ * Esta es una subclase de Dulce y representa una snickers.
  */
-public class Snickers extends Bebida {
+public class Snickers extends Dulce {
 
     /**
      * Constructor personalizado de Snickers que permite asignarle un número de serie.

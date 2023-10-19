@@ -1,5 +1,5 @@
 /**
- * Esta es una subclase abstracta de Producto y puede representa algun tipo de dulse.
+ * Esta es una subclase abstracta de Producto y puede representar algún tipo de dulce.
  */
 public abstract class Dulce extends Producto {
     private int serie;
@@ -7,7 +7,7 @@ public abstract class Dulce extends Producto {
     /**
      * Constructor personalizado de Dulce que permite asignarle un número de serie.
      * 
-     * @param serie Es el número que representa la serie del objeto.
+     * @param numSerie Es el número que representa la serie del objeto.
      */
     public Dulce(int numSerie) {
         super();
