@@ -1,11 +1,11 @@
 /**
- * Esta clase simula una máquina expendedora, la cual posee varios depósitos de productos y uno de monerdas.
+ * Esta clase simula una máquina expendedora, la cual posee varios depósitos de productos y uno de monedas.
  * Permite adquirir estos productos a través de una compra y entrega un vuelto.
  *
  * @author Angie Ramírez
  */
 public class Expendedor{
-    /** Depositos que alamacenan los tipos de productos o monedas*/
+    /** Depósitos que almacenan los tipos de productos o monedas*/
     private Deposito<Bebida> coca = new Deposito<>();
     private Deposito<Bebida> sprite= new Deposito<>();
     private Deposito<Bebida> fanta= new Deposito<>();
@@ -34,12 +34,16 @@ public class Expendedor{
      * @return Producto adquirido del depósito solicitado.
      * @throws PagoIncorrectoException Si la variable m resulta null.
      * @throws NoHayProductoException Si el consumidor selecciona un tipo de producto no existente en el Enum o si no hay más productos en su depósito.
-     * @throws PagoInsuficienteException Si la Moneda m es de un valor menor al precio del producto solicitado.
+     * @throws PagoInsuficienteException Si la Moneda "m" es de un valor menor al precio del producto solicitado.
      */
     public Producto comprarProducto(Moneda m,TipoProducto cual) throws PagoIncorrectoException, NoHayProductoException, PagoInsuficienteException {
 
         if(m==null){
             throw new PagoIncorrectoException();
+        }
+        if(cual==null){
+            monVu.add(m);
+            throw new NoHayProductoException();
         }
 
         switch (cual) {
@@ -59,6 +63,7 @@ public class Expendedor{
                         throw new NoHayProductoException();
                     }
                 }
+                break;
 
             case SPRITE:
                 if (m.getValor() >= Precio.VALSPRITE.getPrecio() && sprite.check() != 0) {
@@ -76,6 +81,7 @@ public class Expendedor{
                         throw new NoHayProductoException();
                     }
                 }
+                break;
 
             case FANTA:
                 if (m.getValor() >= Precio.VALFANTA.getPrecio() && fanta.check() != 0) {
@@ -93,6 +99,7 @@ public class Expendedor{
                         throw new NoHayProductoException();
                     }
                 }
+                break;
 
             case SNICKERS:
                 if (m.getValor() >= Precio.VALSNICK.getPrecio() && snikers.check() != 0) {
@@ -110,6 +117,7 @@ public class Expendedor{
                         throw new NoHayProductoException();
                     }
                 }
+                break;
 
             case SUPER8:
                 if (m.getValor() >= Precio.VALSUPER8.getPrecio() && super8.check() != 0) {
@@ -127,11 +135,13 @@ public class Expendedor{
                         throw new NoHayProductoException();
                     }
                 }
+                break;
 
             default:
                 monVu.add(m);
                 throw new NoHayProductoException();
         }
+        return null;
     }
 
     /**
