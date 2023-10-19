@@ -12,7 +12,7 @@ public class TestComprador {
 
 	@BeforeEach
     void setup() {
-    	moneda1500 = new Moneda1500();
+    	moneda = new Moneda1500();
     	expendedor = new Expendedor(3);
     }
 
@@ -21,11 +21,44 @@ public class TestComprador {
     @DisplayName("Test de Comprador.")
     void testComprarConTodoBien() {
         try{
-            comprador = new Comprador(moneda, SPRITE);
+            comprador = new Comprador(moneda, TipoProducto.SPRITE, expendedor);
             assertTrue(comprador.queConsumiste().equals("sprite"));
             assertEquals(200,comprador.cuantoVuelto());
         } catch(Exception e) {
             assertTrue(false);
+        }
+    }
+
+    @Test
+    @DisplayName("Test de NoHayProductoException.")
+    void testComprarSinProducto() {
+        moneda = new Moneda1500();
+        try{
+            comprador = new Comprador(moneda, TipoProducto.SPRITE, expendedor);
+        } catch(NoHayProductoException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    @DisplayName("Test de PagoInsuficienteException.")
+    void testComprarConMenosDinero() {
+        moneda = new Moneda1000();
+        try{
+            comprador = new Comprador(moneda, TipoProducto.COCA, expendedor);
+        } catch(PagoInsuficienteException e) {
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    @DisplayName("Test de PagoIncorrectoException.")
+    void testComprarSinMoneda() {
+        moneda = null;
+        try{
+            comprador = new Comprador(moneda, TipoProducto.COCA, expendedor);
+        } catch(PagoIncorrectoException e) {
+            assertTrue(true);
         }
     }
 }
