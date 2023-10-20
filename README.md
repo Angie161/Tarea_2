@@ -10,8 +10,7 @@ En este proyecto, encontrarás dos carpetas clave: `test` y `src` dentro del dir
 
 ### 📝 UML
 
-Además, hemos incluido una imagen del diagrama UML al inicio del repositorio con el nombre `uml.png`. En caso de que no puedas visualizarla por alguna razón, también está disponible haciendo clic [aquí](https://github.com/Angie161/Tarea_2/assets/146099765/91d1ff92-fb75-4b90-9c3a-ea495baa139c)
-
+Además, hemos incluido una imagen del diagrama UML al inicio del repositorio con el nombre `uml.png`. En caso de que no puedas visualizarla por alguna razón, también está disponible haciendo clic [aquí](https://github.com/Angie161/Tarea_2/assets/146099765/74596bd2-c97a-4641-885e-78614c296b52)
 
 ---
 
