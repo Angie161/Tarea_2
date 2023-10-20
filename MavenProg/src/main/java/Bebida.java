@@ -7,7 +7,7 @@ public abstract class Bebida extends Producto {
     /**
      * Constructor personalizado de Bebida que permite asignarle un número de serie.
      * 
-     * @param serie Es el número que representa la serie del objeto.
+     * @param numSerie Es el número que representa la serie del objeto.
      */
     public Bebida(int numSerie) {
         super();
